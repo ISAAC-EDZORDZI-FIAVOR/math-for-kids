@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Noto+Sans+KR:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #e6e6ea;
+    font-family: 'Luckiest Guy';
+    font-weight: bold;
+}
+.container{
+    padding: 20px;
+    overflow: hidden;
+    background-color: green;
+}
+.container h1{
+    float: left;
+    margin-left: 10%;
+    color: white;
+}
+.container ul{
+    list-style-type: none;
+    font-size: 20px;
+    margin-left: 60%;
+}
+.container li{
+    margin-top: 10px;
+    float: left;
+    padding: 0 20px 0 20px;
+}
+.container a{
+    text-decoration: none;
+    color: white;
+}
+.current a::after{
+    content: '_';
+    background-color: white;
+    font-size: 4px;
+    display: block;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: 82% 18%;
+}
+.equation{
+    font-size: 65px;
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 9%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.equation h1{
+    display: inline;
+    padding: 20px;
+}
+.answer-options{
+    font-size: 67px;
+    margin-right: 10px;
+}
+.answer-options h1{
+    cursor: pointer;
+    color: whitesmoke;
+    border-radius: 3px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+#option1{
+    background-color: red;
+    transition: 1s;
+}
+#option1:hover{
+    color: red;
+    background-color: white;
+}
+#option2{
+    background-color: green;
+    transition: 1s;
+}
+#option2:hover{
+    color: green;
+    background-color: white;
+}
+#option3{
+    background-color: yellow;
+    transition: 1s;
+}
+#option3:hover{
+    color: yellow;
+    background-color: white;
+}
+#result-container{
+    font-size: 65px;
+    border-radius: 3px;
+    text-align: center;
+    color: green;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.allIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.icon{
+    width: 150px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: 1s;
+}
+.containerIndex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.btn1{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 1s;
+    padding: 50px;
+}
+
+.btn2{
+    background-color: green;
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 1s;
+    padding: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+.th{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: green;
+}
+.number1{
+    font-size: 30px;
+    background-color: rgb(0, 13, 128);
+    justify-content: center;
+    padding: 10px;
+    color: white;
+}
+
+.number2{
+    font-size: 30px;
+    background-color: red;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+}
+.number3{
+    font-size: 30px;
+    background-color: yellow;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+}
+
+#display{
+    font-size: 65px;
+    border-radius: 3px;
+    text-align: center;
+    color: green;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

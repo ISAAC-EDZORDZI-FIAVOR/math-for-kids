@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Learning for Deaf Children</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="add.css">
+  <style>
+    .calculator {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .explanation {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .visual-representation {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    .visual-representation img {
+      max-width: 100%;
+      height: auto;
+    }
+    .operand-container {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    .operand-container img {
+      width: 50px;
+      height: 50px;
+      margin: 0 5px;
+    }
+    .result-container {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    .result-container img {
+      width: 50px;
+      height: 50px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="h32">Math Learning for DYSCALCULIA  Children</h1>
+    <div class="calculator">
+      <input type="text" class="form-control form-control-lg mb-3" id="display" disabled>
+      <div class="row">
+        <div class="col">
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="appendToDisplay('7')">7</button>
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="appendToDisplay('4')">4</button>
+          <button class="btn number3 btn-lg btn-block mb-2" onclick="appendToDisplay('1')">1</button>
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="appendToDisplay('0')">0</button>
+        </div>
+        <div class="col">
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="appendToDisplay('8')">8</button>
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="appendToDisplay('5')">5</button>
+          <button class="btn number3 btn-lg btn-block mb-2" onclick="appendToDisplay('2')">2</button>
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="clearDisplay()">C</button>
+        </div>
+        <div class="col">
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="appendToDisplay('9')">9</button>
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="appendToDisplay('6')">6</button>
+          <button class="btn number3 btn-lg btn-block mb-2" onclick="appendToDisplay('3')">3</button>
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="calculate()">=</button>
+        </div>
+        <div class="col">
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="appendToDisplay('+')">+</button>
+          <button class="btn number2 btn-lg btn-block mb-2" onclick="appendToDisplay('-')">-</button>
+          <button class="btn number3 btn-lg btn-block mb-2" onclick="appendToDisplay('*')">×</button>
+          <button class="btn number1 btn-lg btn-block mb-2" onclick="appendToDisplay('/')">/</button>
+        </div>
+      </div>
+    </div>
+    <div class="explanation mt-5">
+        <h2 class="text-center text-white mb-4">Explanation</h2>
+        <h2 class="text-white text-center " id="explanation"></h2>
+      </div>
+      <div class="visual-representation mt-5">
+        <div class="text-white " id="visual-representation-container"></div>
+      </div>
+    
+  </div>
+</div>
+
+  <script>
+    let displayValue = '';
+
+    function appendToDisplay(value) {
+      displayValue += value;
+      document.getElementById('display').value = displayValue;
+    }
+
+    function clearDisplay() {
+      displayValue = '';
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      try {
+        const result = eval(displayValue);
+        document.getElementById('display').value = result;
+
+        // Split the expression into operands and operator
+        const [num1, operator, num2] = displayValue.split(/([+\-*/])/);
+
+        // Create visual representation elements
+        const visualRepresentationContainer = document.getElementById('visual-representation-container');
+        visualRepresentationContainer.innerHTML = ''; // Clear previous content
+
+        const operandContainer1 = document.createElement('div');
+        operandContainer1.classList.add('operand-container');
+        for (let i = 0; i < num1; i++) {
+          const operandElement = document.createElement('img');
+          operandElement.src = 'apple2.png'; // Replace with the path to your operand image
+          operandElement.alt = 'Operand';
+          operandContainer1.appendChild(operandElement);
+        }
+        visualRepresentationContainer.appendChild(operandContainer1);
+
+        const operatorElement = document.createElement('p');
+        operatorElement.textContent = operator;
+        visualRepresentationContainer.appendChild(operatorElement);
+
+        const operandContainer2 = document.createElement('div');
+        operandContainer2.classList.add('operand-container');
+        for (let i = 0; i < num2; i++) {
+          const operandElement = document.createElement('img');
+          operandElement.src = 'apple2.png'; // Replace with the path to your operand image
+          operandElement.alt = 'Operand';
+          operandContainer2.appendChild(operandElement);
+        }
+        visualRepresentationContainer.appendChild(operandContainer2);
+
+        const equalsElement = document.createElement('p');
+        equalsElement.textContent = '=';
+        visualRepresentationContainer.appendChild(equalsElement);
+
+        const resultContainer = document.createElement('div');
+        resultContainer.classList.add('result-container');
+        for (let i = 0; i < result; i++) {
+          const resultElement = document.createElement('img');
+          resultElement.src = 'apple2.png'; // Replace with the path to your operand image
+          resultElement.alt = 'Result';
+          resultContainer.appendChild(resultElement);
+        }
+        visualRepresentationContainer.appendChild(resultContainer);
+
+        document.getElementById('explanation').textContent = `${num1} ${operator} ${num2} = ${result}`;
+      } catch (error) {
+        document.getElementById('explanation').textContent = 'Invalid expression';
+        const visualRepresentationContainer = document.getElementById('visual-representation-container');
+        visualRepresentationContainer.innerHTML = ''; // Clear previous content
+      }
+    }
+  </script>
+</body>
+</html>
